@@ -1,0 +1,50 @@
+<div class="container-fluid bg-choose-addr p-4">
+  <div class="row d-flex justify-content-center">
+    <div class="col-2">
+      <div class="row justify-content-end">
+        <h5>Year:</h5>
+      </div>
+    </div>
+    <div class="col-2">
+      <select>
+        <option >2018</option>
+        <option >2017</option>
+        <option >2016</option>
+        <option >2015</option>
+      </select>
+    </div>
+
+    <div class="col-md-2 col-sm-6 border-left border-info">
+      <div class="row justify-content-end">
+        <h5>Month:</h5>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-6">
+      <select >
+        <option *ngFor="let month of getMonth">{{ month }}</option>
+        </select>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <ul class="list-group shadow-lg rounded">
+        <li class="list-group-item  bg-info">
+          <h4></h4>
+        </li>
+        <li class="list-group-item p-4" *ngFor='let blk of varPrice'>
+          <span>{{blk.name | uppercase}}</span>
+          <span class="float-right">
+            <strong> {{blk.sum}} </strong> uah</span>
+        </li>
+        <li class="list-group-item p-4" *ngFor='let blk of fixPrice'>
+          <span>{{blk.name | uppercase}}</span>
+          <span class="float-right">
+            <strong> {{blk.sum}}</strong> uah</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

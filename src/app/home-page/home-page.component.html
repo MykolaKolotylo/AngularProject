@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col bg-address pt-3 pb-3 mb-4">
+      <div class="row">
+        <div class="col-sm-8 d-flex justify-content-center">
+          <h5>Chernivtsi, avenue of Independence, 94, sq. 79</h5>
+        </div>
+        <div class="col-sm-4">
+          <h5>Vlagova M. S.</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-9 p-0">
+      <app-variable-price *ngFor='let blk of varBlock' [varBlk]='blk'></app-variable-price>
+      <app-fixed-price *ngFor='let blk of fixedBlock' [fixedBlk]='blk'></app-fixed-price>
+
+      <div class="card border-info mb-5 shadow rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">
+                Save payment
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <div class="alert alert-info">
+                        <strong>Info!</strong> Indicates a neutral informative change or action.
+                      </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button type="button" class="btn btn-info">Save Payment</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-6">
+              <h5 class="card-title">Total 1700 uah</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container mt-5">
+  <div class="row ">
+
+    <div class="col-6">
+      <div class="card mb-3 border-info shadow  rounded">
+        <div class="card-header bg-info text-center">
+          <h5>Add new address</h5>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inp-w">City</label>
+                <input list="city" class="form-control" id="inp-w" #valCity>
+                <datalist id="city">
+                  <option value="Chernivtsi">
+                </datalist>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inp-w">Street</label>
+                <input list="street" class="form-control" id="inp-w" #valStreet>
+                <datalist id="street">
+                  <option value="avenue of Independence">
+                  <option value="Golovna">
+                </datalist>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inp-w">House number</label>
+                <input list="num-house" class="form-control" id="inp-w" #valNumHouse>
+                <datalist id="num-house">
+                  <option value="94">
+                  <option value="23">
+                </datalist>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inp-w">sq.</label>
+                <input list="num-apartment" class="form-control" id="inp-w" #valNumApartment>
+                <datalist id="num-apartment">
+                  <option value="79">
+                  <option value="12">
+                </datalist>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inp-w">Name</label>
+                <input list="name" class="form-control" id="inp-w">
+                <datalist id="name">
+                  <option value="Vlagova M. S.">
+                  <option value="Veklych T. R.">
+                </datalist>
+              </div>
+            </div>
+            <div class="col-12 border-top pt-2 text-center">
+              <button class="btn btn-outline-info" (click)="getAddres(valCity.value, valStreet.value,  valNumHouse.value, valNumApartment.value);  valCity.value=''; valStreet.value=''; valNumHouse.value=''; valNumApartment.value='' ">Add Address</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card mb-3 border-info shadow  rounded">
+        <div class="card-header bg-info text-center">
+          <h5>Choose the address</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let fullAddress of getDefaultAddress">{{ fullAddress.city }}, {{ fullAddress.street }}, {{ fullAddress.numHouse }}, sq.{{ fullAddress.numApartment }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="card border-info  mb-3 shadow-lg rounded">
+  <div class="card-header bg-info">
+    <div class="row">
+      <div class="col-6">
+        <h4>{{ varBlk.name | uppercase }}</h4>
+      </div>
+      <div class="col-6">
+        <h6 class="text-center">Current date: {{ objDate | date }}</h6>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class=" water-wrap col-md-6 col-lg-7 col-sm-12">
+        <div class="form-group">
+          <label for="inp-w">Previous</label>
+          <input type="text" class="form-control" id="inp-w" value="{{ varBlk.previous }}">
+        </div>
+        <div class="form-group">
+          <label for="inp-w1">Current</label>
+          <input type="text" class="form-control" id="inp-w1">
+        </div>
+        <div class="form-group">
+          <label for="inp-w1">Tariff</label>
+          <input type="text" class="form-control" id="inp-w3" value="{{ varBlk.tariff }}" disabled>
+        </div>
+        <div class="form-group">
+          <label for="inp-w4">Sum</label>
+          <input type="text" class="form-control" id="inp-w4" value="{{ varBlk.sum }}">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-outline-info btn-block form-control">Calculate</button>
+        </div>
+      </div>
+
+      <div class=" water-wrap border-left col-md-6 col-lg-5 col-sm-12">
+        <div class="jumbotron m-0">
+            <p class="lead">Personal account: <strong>{{ varBlk.persAcc }}</strong></p>
+            <p class="lead">Last Payment: <strong> May 10 2018</strong></p>
+            <p class="lead">Last Sum: <strong>200 uah</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

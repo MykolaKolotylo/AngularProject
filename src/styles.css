@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+#body-style {
+    /* background-image: url('./img/bg.png'); */
+    background-color: rgba(74, 104, 236, 0.637);
+    font-family: sans-serif;
+  }
+  
