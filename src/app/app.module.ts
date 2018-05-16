@@ -7,15 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ManagementTariffComponent } from './management-tariff/management-tariff.component';
-import { HistoryComponent } from './history/history.component';
 import { FixedPriceComponent } from './home-page/fixed-price/fixed-price.component';
 import { VariablePriceComponent } from './home-page/variable-price/variable-price.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ManagementAddressComponent } from './management-address/management-address.component';
-import { HistoryService } from './services/history.service';
-import { AddressService } from './services/address.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './mock-db';
+import { HistoryPaymentComponent } from './history-payment/history-payment.component';
 
 
 
@@ -25,10 +23,10 @@ import { InMemoryDataService } from './mock-db';
     AppComponent,
     HomePageComponent,
     ManagementTariffComponent,
-    HistoryComponent,
     FixedPriceComponent,
     VariablePriceComponent,
-    ManagementAddressComponent
+    ManagementAddressComponent,
+    HistoryPaymentComponent
   ],
 
   imports: [
@@ -40,10 +38,7 @@ import { InMemoryDataService } from './mock-db';
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [
-    HistoryService,
-    AddressService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

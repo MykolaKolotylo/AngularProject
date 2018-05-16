@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AddressService } from '../services/address.service';
 // import { collectExternalReferences } from '@angular/compiler';
 
 @Component({
@@ -10,7 +9,7 @@ import { AddressService } from '../services/address.service';
 })
 export class ManagementAddressComponent implements OnInit {
 
-  constructor(private addressSrvice: AddressService) { }
+  constructor() { }
 
   getDefaultAddress;
   arr = [];
@@ -25,7 +24,6 @@ export class ManagementAddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getDefaultAddress = this.addressSrvice.getDefaultAddress();
   }
 
 }

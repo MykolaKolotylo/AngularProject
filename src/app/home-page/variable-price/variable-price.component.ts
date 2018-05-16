@@ -15,7 +15,7 @@ export class VariablePriceComponent implements OnInit {
   objDate = Date.now();
 
   ngOnInit() {
-    console.log(this.varBlk);
+    // console.log(this.varBlk);
   }
 
 }

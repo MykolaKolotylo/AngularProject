@@ -13,20 +13,24 @@
     <div class="row">
       <div class=" water-wrap col-md-6 col-lg-7 col-sm-12">
         <div class="form-group">
-          <label for="inp-w">Previous</label>
-          <input type="text" class="form-control" id="inp-w" value="{{ varBlk.previous }}">
+          <label>Previous
+            <input type="text" class="form-control " value="{{ varBlk.previous }}">
+          </label>
         </div>
         <div class="form-group">
-          <label for="inp-w1">Current</label>
-          <input type="text" class="form-control" id="inp-w1">
+          <label>Current
+            <input type="text" class="form-control">
+          </label>
         </div>
         <div class="form-group">
-          <label for="inp-w1">Tariff</label>
-          <input type="text" class="form-control" id="inp-w3" value="{{ varBlk.tariff }}" disabled>
+          <label>Tariff
+            <input type="text" class="form-control" value="{{ varBlk.tariff }}" disabled>
+          </label>
         </div>
         <div class="form-group">
-          <label for="inp-w4">Sum</label>
-          <input type="text" class="form-control" id="inp-w4" value="{{ varBlk.sum }}">
+          <label for="inp-w4">Sum
+            <input type="text" class="form-control" value="{{ varBlk.sum }}">
+          </label>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-outline-info btn-block form-control">Calculate</button>
@@ -35,9 +39,15 @@
 
       <div class=" water-wrap border-left col-md-6 col-lg-5 col-sm-12">
         <div class="jumbotron m-0">
-            <p class="lead">Personal account: <strong>{{ varBlk.persAcc }}</strong></p>
-            <p class="lead">Last Payment: <strong> May 10 2018</strong></p>
-            <p class="lead">Last Sum: <strong>200 uah</strong></p>
+          <p class="lead">Personal account:
+            <strong>{{ varBlk.persAcc }}</strong>
+          </p>
+          <p class="lead">Last Payment:
+            <strong> May 10 2018</strong>
+          </p>
+          <p class="lead">Last Sum:
+            <strong>200 uah</strong>
+          </p>
         </div>
       </div>
 

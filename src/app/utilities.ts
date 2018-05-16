@@ -27,6 +27,6 @@ export class Payment {
     id: number;
     year: number;
     month: string;
-    fixedUt: any[];
-    varUt: any[];
+    fixedUt: FixedUtilities[];
+    varUt: VarUtilities[];
 }
