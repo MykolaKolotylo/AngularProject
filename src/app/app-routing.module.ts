@@ -12,7 +12,7 @@ const routes = [
   {path: 'management', component: ManagementTariffComponent},
   {path: 'history', component:     HistoryPaymentComponent},
   {path: 'address', component: ManagementAddressComponent},
-  { path: 'getYear/:id', component: HistoryPaymentComponent },
+  { path: 'history/:id', component: HistoryPaymentComponent },
 ];
 
 @NgModule({

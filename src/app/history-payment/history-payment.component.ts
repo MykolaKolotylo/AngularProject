@@ -33,7 +33,7 @@ export class HistoryPaymentComponent implements OnInit {
   }
 
   getTemplatePayment(): void {
-    this.historyServiceService.getPayment(this.selectedYear).subscribe(data => {
+    this.historyServiceService.getPayment(this.selectedYear, this.selectedMonth).subscribe(data => {
       this.payment = data;
     });
   }

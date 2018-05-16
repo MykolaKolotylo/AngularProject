@@ -14,6 +14,7 @@ export class FixedPriceComponent implements OnInit {
   objDate = Date.now();
 
   ngOnInit() {
+    // console.log(this.fixedBlk);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { varUtilities, fixedUtilities } from '../mock-utilities';
-import { VarUtilities, FixedUtilities } from '../utilities';
+
+import { Payment } from '../utilities';
+import { HomeService } from './home-service.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,15 +10,20 @@ import { VarUtilities, FixedUtilities } from '../utilities';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
-  varBlock: VarUtilities[] = varUtilities;
-  fixedBlock: FixedUtilities[] = fixedUtilities;
+  payments: Payment[];
 
   objDate = Date.now();
 
   ngOnInit() {
-    // console.log(this.varBlock);
+    this.getTemplate();
+  }
+
+  getTemplate (): void {
+    this.homeService.getPayment().subscribe(data => { this.payments = data;
+    console.log(this.payments);
+    });
   }
 
 }

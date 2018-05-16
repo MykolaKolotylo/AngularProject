@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { VarUtilities } from '../../utilities';
+
+import { Payment } from '../../utilities';
 
 @Component({
   selector: 'app-variable-price',
@@ -8,14 +9,16 @@ import { VarUtilities } from '../../utilities';
 })
 export class VariablePriceComponent implements OnInit {
 
+
   constructor() { }
 
-  @Input() varBlk: VarUtilities[];
+  @Input() varBlk;
 
   objDate = Date.now();
 
   ngOnInit() {
-    // console.log(this.varBlk);
+    console.log(this.varBlk);
   }
+
 
 }
