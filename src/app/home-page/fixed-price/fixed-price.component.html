@@ -1,24 +1,18 @@
-<div class="card border-info mb-3 shadow  rounded">
-  <div class="card-header bg-info">
-    <div class="row">
-      <div class="col-6">
-        <h4>{{ fixedBlk.name | uppercase }}</h4>
-      </div>
-      <div class="col-6">
-        <h6 class="text-center">Current date: {{ objDate | date }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="card-body">
+<accordion>
+  <accordion-group heading="{{ fixedBlk.name | uppercase }}" [panelClass]="customClass">
     <div class="row">
       <div class="card-text water-wrap col-md-6 col-lg-7 col-sm-12">
-        <p class="card-text display-4 text-center mt-5">Tariff: <strong>{{ fixedBlk.sum }} uah</strong></p>
+        <p class="card-text display-4 text-center mt-5">Tariff:
+          <strong>{{ fixedBlk.sum }} uah</strong>
+        </p>
       </div>
       <div class=" water-wrap border-left col-md-6 col-lg-5 col-sm-12">
         <div class="jumbotron m-0">
-            <p class="lead">Personal account: <strong>{{ fixedBlk.persAcc }}</strong></p>
+          <p class="lead">Personal account:
+            <strong>{{ fixedBlk.persAcc }}</strong>
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </accordion-group>
+</accordion>

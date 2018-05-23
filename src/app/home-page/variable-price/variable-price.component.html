@@ -1,39 +1,47 @@
-<div class="card border-info  mb-3 shadow-lg rounded">
-  <div class="card-header bg-info">
-    <div class="row">
-      <div class="col-6">
-        <h4>{{varBlk.name}}</h4>
-      </div>
-      <div class="col-6">
-      <h6 class="text-center">Current date: {{ objDate | date }}</h6>
-      </div>
-    </div>
-  </div>
-  <div class="card-body">
+<accordion>
+  <accordion-group heading="{{varBlk.name | uppercase }}" [panelClass]="customClass">
     <div class="row">
       <div class=" water-wrap col-md-6 col-lg-7 col-sm-12 ">
         <div class="form-group mr-2">
           <label>Previous
-          <input type="text" class="form-control " value="{{ varBlk.previous }}">
+            <input type="text" class="form-control" [(ngModel)]="varBlk.previous">
           </label>
         </div>
-        <div class="form-group mr-2">
+        <div class="form-group">
           <label>Current
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]="varBlk.current">
           </label>
         </div>
         <div class="form-group mr-2">
           <label>Tariff
-            <input type="text" class="form-control" value="{{ varBlk.tariff }}" disabled>
+            <input type="text" class="form-control" [(ngModel)]="varBlk.tariff" disabled>
           </label>
         </div>
-        <div class="form-group mr-2">
-          <label for="inp-w4">Sum
-            <input type="text" class="form-control" value="{{ varBlk.sum }}">
+        <div class="form-group ">
+          <label>Sum
+            <input type="text" class="form-control" [(ngModel)]="varBlk.sum">
           </label>
         </div>
         <div class="form-group mr-2">
           <button type="submit" class="btn btn-outline-info btn-block form-control">Calculate</button>
+        </div>
+
+        <div class="form-group mr-5 pr-2 float-right">
+
+          <!-- <button type="button" class="btn btn-info" (click)="openModal(template)">
+            Save
+          </button>
+          <ng-template #template>
+            <div class="modal-body">
+              <div class="alert alert-info">
+                <strong>Info!</strong> If you save the payment, it will not be possible to change it
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+              <button type="button" class="btn btn-info" (click)="modalRef.hide()" (click)="save(varBlk, varBlk)">Save</button>
+            </div>
+          </ng-template> -->
+
         </div>
       </div>
 
@@ -52,5 +60,5 @@
       </div>
 
     </div>
-  </div>
-</div>
+  </accordion-group>
+</accordion>

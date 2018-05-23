@@ -6,3 +6,7 @@
     width: 100%;
     background-color: #17a2b8;
   }
+
+  ::ng-deep .card.customClass .card-header {
+    background-color: rgb(38, 162, 184);
+  }

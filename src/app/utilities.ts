@@ -24,9 +24,23 @@ export class Address {
 }
 
 export class Payment {
-    id: number;
     year: number;
-    month: string;
+    month: number;
     fixedUt: FixedUtilities[];
     varUt: VarUtilities[];
+
+    constructor(year?: number, month?: number, fixedUt?: FixedUtilities[], varUt?: VarUtilities[]) {
+        this.year = year;
+        this.month = month;
+        this.fixedUt = fixedUt;
+        this.varUt = varUt;
+    }
+
 }
+
+// export class NewPayment {
+//     year: number;
+//     month: number;
+//     fixedUt: FixedUtilities[];
+//     varUt: VarUtilities[];
+// }

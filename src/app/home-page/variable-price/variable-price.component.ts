@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 
 import { Payment } from '../../utilities';
+import { HomeService } from '../home-service.service';
 
 @Component({
   selector: 'app-variable-price',
@@ -10,15 +11,16 @@ import { Payment } from '../../utilities';
 export class VariablePriceComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   @Input() varBlk;
 
   objDate = Date.now();
 
+  payment: Payment;
+
+  customClass = 'customClass';
+
   ngOnInit() {
-    console.log(this.varBlk);
   }
-
-
 }

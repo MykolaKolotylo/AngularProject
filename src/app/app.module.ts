@@ -4,6 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
+
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ManagementTariffComponent } from './management-tariff/management-tariff.component';
@@ -14,6 +18,7 @@ import { ManagementAddressComponent } from './management-address/management-addr
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './mock-db';
 import { HistoryPaymentComponent } from './history-payment/history-payment.component';
+import { MonthPipe } from './pipes/monthPipe';
 
 
 
@@ -26,17 +31,21 @@ import { HistoryPaymentComponent } from './history-payment/history-payment.compo
     FixedPriceComponent,
     VariablePriceComponent,
     ManagementAddressComponent,
-    HistoryPaymentComponent
+    HistoryPaymentComponent,
+    MonthPipe
   ],
 
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    AccordionModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

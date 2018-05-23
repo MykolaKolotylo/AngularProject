@@ -26,7 +26,8 @@
     "jquery": "^3.3.1",
     "ngx-bootstrap": "^2.0.5",
     "popper.js": "^1.14.3",
-    "rxjs": "^6.0.0",
+    "rx-observable-update": "^1.0.0",
+    "rxjs": "^6.1.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

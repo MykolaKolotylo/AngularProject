@@ -8,14 +8,18 @@ import { Payment } from '../utilities';
 @Injectable({
   providedIn: 'root'
 })
-export class HistoryServiceService {
+export class HistoryService {
   private paymentUrl = 'api/payment';
+  payment: Payment;
 
   constructor(private http: HttpClient) { }
 
-  getPayment(year: number, month: string): Observable<Payment[]> {
-    const url = `${this.paymentUrl}/?year=${year}/?month${month}`;
-    return this.http.get<Payment[]>(url);
+  getPayment(): Observable<Payment[]> {
+    return this.http.get<Payment[]>(this.paymentUrl);
   }
 
+  getPaymentHistory(year: number, month: string): Observable<Payment[]> {
+    const url = `${this.paymentUrl}/?year=${year}\&month=${month}`;
+    return this.http.get<Payment[]>(url);
+  }
 }
