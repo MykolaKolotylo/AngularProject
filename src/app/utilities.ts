@@ -37,10 +37,3 @@ export class Payment {
     }
 
 }
-
-// export class NewPayment {
-//     year: number;
-//     month: number;
-//     fixedUt: FixedUtilities[];
-//     varUt: VarUtilities[];
-// }

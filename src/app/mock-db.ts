@@ -12,18 +12,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 { id: 3, name: 'gas', previous: 112123, current: 21, tariff: 3.8, sum: 153, persAcc: 134253 }]
             }
         ];
-
-
-        const newPayment = [{
-            year: 2018, month: 2,
-            fixedUt: [{ id: 1, name: 'rent', sum: null },
-            { id: 2, name: 'heating', sum: null }],
-            varUt: [{ id: 1, name: 'light', previous: 12343, current: null, tariff: 2.05, sum: null, persAcc: 12345 },
-            { id: 2, name: 'water', previous: 435345, current: null, tariff: 1.56, sum: null, persAcc: 324354 },
-            { id: 3, name: 'gas', previous: 112123, current: null, tariff: 3.8, sum: null, persAcc: 134253 }]
-        }];
-
-        const db = { payment, newPayment };
+        const db = { payment };
         return db;
     }
 }

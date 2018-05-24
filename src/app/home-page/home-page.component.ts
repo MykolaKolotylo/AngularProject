@@ -17,74 +17,79 @@ export class HomePageComponent implements OnInit {
     private modalService: BsModalService) { }
 
   payments: Payment[];
-  year: number;
-  month: number;
-  fixedUt: FixedUtilities[];
-  varUt: VarUtilities[];
-  paymentList = [];
   element: Payment;
   lastPayment: Payment;
-  newPayment = [];
 
   modalRef: BsModalRef;
 
-  public addPayment = true;
+  // public addPayment = true;
 
   objDate = Date.now();
 
   ngOnInit() {
     this.getPayments();
-    this.getTemlatePayments();
   }
 
   getPayments(): void {
     this.homeService.getPayment().subscribe(payments => {
-      this.paymentList = payments;
-      this.lastPayment = this.paymentList[this.paymentList.length - 1];
-      // console.log(this.lastPayment);
+      this.payments = payments;
+      this.lastPayment = this.payments[this.payments.length - 1];
     });
   }
 
-  getTemlatePayments() {
-    this.homeService.getNewTemplatePayment().subscribe(data => {
-      this.newPayment = data;
-      // console.log(data);
-    });
-  }
+  // ......add new payment........
 
   addNewPayment() {
-    let getTemlatenPayment: any = this.newPayment;
-    this.newPayment.forEach(element => {
-      getTemlatenPayment = element;
-      // console.log(test1);
+
+    this.element = {
+      year: 1, month: 0,
+      fixedUt: [{ id: 1, name: 'rent', sum: null, persAcc: 12345 },
+      { id: 2, name: 'heating', sum: null, persAcc: 12345 }],
+      varUt: [{ id: 1, name: 'light', previous: 123, current: null, tariff: 2.05, sum: null, persAcc: 12345 },
+      { id: 2, name: 'water', previous: 435345, current: null, tariff: 1.56, sum: null, persAcc: 324354 },
+      { id: 3, name: 'gas', previous: 112123, current: null, tariff: 3.8, sum: null, persAcc: 134253 }]
+    };
+    // TODO
+    // get real last element
+    //
+    // handle if DB is empty
+    // year=2018
+    // month=curren month
+    // preveously  for all = 0
+
+    this.element.varUt.forEach((el, i) => {
+      el.previous = this.lastPayment.varUt[i].current;
     });
 
-    if (getTemlatenPayment.month === this.lastPayment.month) {
-      getTemlatenPayment.month = this.lastPayment.month + 1;
-    }
-
-    if (getTemlatenPayment.month === 13) {
-      getTemlatenPayment.year = this.lastPayment.year + 1;
-      getTemlatenPayment.month = 1;
+    if (this.lastPayment.month === 12) {
+      this.element.year = this.lastPayment.year + 1;
+      this.element.month = 1;
     } else {
-      getTemlatenPayment.month = this.lastPayment.month + 1;
+      this.element.year = this.lastPayment.year;
+      this.element.month = this.lastPayment.month + 1;
     }
 
-    this.homeService.addPayment(getTemlatenPayment)
+    // console.log(this.element);
+
+    this.homeService.addPayment(this.element)
       .subscribe(payment => {
-        getTemlatenPayment = payment;
-        this.paymentList.push(getTemlatenPayment);
-        this.lastPayment = getTemlatenPayment;
+        this.element = payment;
+        this.payments.push(this.element);
+        this.lastPayment = this.element;
+        // console.log(this.payments);
       });
 
-    console.log(this.paymentList);
 
   }
+
+  // ......save.....
 
   save(payment: Payment): void {
     this.homeService.updatePayment(payment)
       .subscribe();
   }
+
+  // .......modal.......
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

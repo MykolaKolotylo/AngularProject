@@ -18,8 +18,8 @@ export class HistoryService {
     return this.http.get<Payment[]>(this.paymentUrl);
   }
 
-  getPaymentHistory(year: number, month: string): Observable<Payment[]> {
-    const url = `${this.paymentUrl}/?year=${year}\&month=${month}`;
-    return this.http.get<Payment[]>(url);
-  }
+  // getPaymentHistory(year: number, month: string): Observable<Payment[]> {
+  //   const url = `${this.paymentUrl}/?year=${year}\&month=${month}`;
+  //   return this.http.get<Payment[]>(url);
+  // }
 }

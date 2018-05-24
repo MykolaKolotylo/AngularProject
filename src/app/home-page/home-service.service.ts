@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
 
 import { Payment } from '../utilities';
 
@@ -16,10 +15,7 @@ const httpOptions = {
 export class HomeService {
 
   private paymentUrl = 'api/payment';
-  private newPaymentUrl = 'api/newPayment';
   payments: Payment[];
-  // paymen: Payment;
-  // newPayment: Payment[];
 
 
   constructor(private http: HttpClient) { }
@@ -35,21 +31,17 @@ export class HomeService {
     return this.http.get<Payment[]>(url);
   }
 
+
+  // ......update payment.......
+
   updatePayment(payment: Payment): Observable<any> {
     console.log(payment);
     return this.http.put<Payment[]>(this.paymentUrl, payment, httpOptions);
   }
 
-  // ........getNewPayment.......
-
-  getNewTemplatePayment () {
-    return this.http.get<Payment[]>(this.newPaymentUrl);
-  }
-
+  // .....add new payment to db.......
 
   addPayment(payment: Payment): Observable<Payment> {
-    // this.payments.push(payment);
-    // console.log('httpClient', payment);
     return this.http.post<Payment>(this.paymentUrl, payment, httpOptions);
   }
 }

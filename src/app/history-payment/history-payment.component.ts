@@ -21,7 +21,6 @@ export class HistoryPaymentComponent implements OnInit {
   paymentByHistory: Payment[];
   selectedYear: number;
   selectedMonth: string;
-  // months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   years = [];
   months = [];
   dataTest = [];
@@ -41,50 +40,45 @@ export class HistoryPaymentComponent implements OnInit {
 
   ngOnInit() {
     this.getTemplatePayment();
-    this.getTemplatePaymentHistory();
+    // this.getTemplatePaymentHistory();
   }
 
-  sortYears(a: number, b: number) {
-    if (a < b) {
-      return 1;
-    }
-    if (a > b) {
-      return -1;
-    }
-  }
+  // sortYears(a: number, b: number) {
+  //   if (a < b) {
+  //     return 1;
+  //   }
+  //   if (a > b) {
+  //     return -1;
+  //   }
+  // }
 
 
 
   getTemplatePayment(): void {
     this.historyService.getPayment().subscribe(data => {
       this.payment = data;
-      this.paymentMethod();
-    });
-  }
-  getTemplatePaymentHistory(): void {
-    this.historyService.getPaymentHistory(this.selectedYear, this.selectedMonth).subscribe(data => {
-      this.paymentByHistory = data;
+      console.log(this.payment);
+      // this.paymentMethod();
     });
   }
 
-  paymentMethod() {
-    this.payment.forEach(el => {
-      if (!this.years.length) {
-        this.years.push(el.year);
-      } else if (this.years.indexOf(el.year) === -1) {
-        this.years.push(el.year);
-      }
-    });
-    this.years.sort(this.sortYears);
 
-  }
-
-
-  // getTemplatePayment(): void {
-  //   this.historyService.getPayment()
-  //     .subscribe(data => this.payment = data);
+  // getTemplatePaymentHistory(): void {
+  //   this.historyService.getPaymentHistory(this.selectedYear, this.selectedMonth).subscribe(data => {
+  //     this.paymentByHistory = data;
+  //   });
   // }
 
 
+  // paymentMethod() {
+  //   this.payment.forEach(el => {
+  //     if (!this.years.length) {
+  //       this.years.push(el.year);
+  //     } else if (this.years.indexOf(el.year) === -1) {
+  //       this.years.push(el.year);
+  //     }
+  //   });
+  //   this.years.sort(this.sortYears);
 
+  // }
 }

@@ -2,14 +2,14 @@
   <div class="row d-flex justify-content-center">
 
     <div class="col-2">
-      <select (change)="getTemplatePaymentHistory()" [(ngModel)]="selectedYear">
-        <option *ngFor="let setYear of years"> {{setYear}}</option>
+      <select (change)="getTemplatePayment()" [(ngModel)]="selectedYear">
+        <option *ngFor="let yearList of payment"> {{yearList.year }}</option>
       </select>
     </div>
     <div class="col-md-2 col-sm-6">
-      <select [(ngModel)]="selectedMonth" (change)="getTemplatePaymentHistory()">
+      <select [(ngModel)]="selectedMonth" (change)="getTemplatePayment()">
         <option *ngFor="let monthList of payment">
-          {{ monthList.month }}</option>
+          {{ monthList.month | month }}</option>
       </select>
     </div>
 
