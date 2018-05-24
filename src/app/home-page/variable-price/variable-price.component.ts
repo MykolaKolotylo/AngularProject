@@ -23,4 +23,8 @@ export class VariablePriceComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  calculate(previous, current, tariff) {
+    this.varBlk.sum = (current - previous) * tariff;
+  }
 }

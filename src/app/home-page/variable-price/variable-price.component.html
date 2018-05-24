@@ -19,29 +19,11 @@
         </div>
         <div class="form-group ">
           <label>Sum
-            <input type="text" class="form-control" [(ngModel)]="varBlk.sum">
+            <input type="text" class="form-control"  value="{{varBlk.sum | number:'.2'}}">
           </label>
         </div>
         <div class="form-group mr-2">
-          <button type="submit" class="btn btn-outline-info btn-block form-control">Calculate</button>
-        </div>
-
-        <div class="form-group mr-5 pr-2 float-right">
-
-          <!-- <button type="button" class="btn btn-info" (click)="openModal(template)">
-            Save
-          </button>
-          <ng-template #template>
-            <div class="modal-body">
-              <div class="alert alert-info">
-                <strong>Info!</strong> If you save the payment, it will not be possible to change it
-              </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-              <button type="button" class="btn btn-info" (click)="modalRef.hide()" (click)="save(varBlk, varBlk)">Save</button>
-            </div>
-          </ng-template> -->
-
+          <button type="submit" class="btn btn-outline-info btn-block form-control" (click)="calculate(varBlk.previous, varBlk.current, varBlk.tariff)">Calculate</button>
         </div>
       </div>
 

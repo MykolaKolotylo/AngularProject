@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { of } from 'rxjs';
 
-import { Payment, FixedUtilities, VarUtilities } from '../utilities';
+import { Payment } from '../utilities';
 import { HomeService } from './home-service.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -22,8 +22,6 @@ export class HomePageComponent implements OnInit {
 
   modalRef: BsModalRef;
 
-  // public addPayment = true;
-
   objDate = Date.now();
 
   ngOnInit() {
@@ -43,8 +41,8 @@ export class HomePageComponent implements OnInit {
 
     this.element = {
       year: 1, month: 0,
-      fixedUt: [{ id: 1, name: 'rent', sum: null, persAcc: 12345 },
-      { id: 2, name: 'heating', sum: null, persAcc: 12345 }],
+      fixedUt: [{ id: 1, name: 'rent', sum: 53, persAcc: 12345 },
+      { id: 2, name: 'heating', sum: 349, persAcc: 12345 }],
       varUt: [{ id: 1, name: 'light', previous: 123, current: null, tariff: 2.05, sum: null, persAcc: 12345 },
       { id: 2, name: 'water', previous: 435345, current: null, tariff: 1.56, sum: null, persAcc: 324354 },
       { id: 3, name: 'gas', previous: 112123, current: null, tariff: 3.8, sum: null, persAcc: 134253 }]
@@ -54,7 +52,7 @@ export class HomePageComponent implements OnInit {
     //
     // handle if DB is empty
     // year=2018
-    // month=curren month
+    // month=current month
     // preveously  for all = 0
 
     this.element.varUt.forEach((el, i) => {
@@ -69,17 +67,12 @@ export class HomePageComponent implements OnInit {
       this.element.month = this.lastPayment.month + 1;
     }
 
-    // console.log(this.element);
-
     this.homeService.addPayment(this.element)
       .subscribe(payment => {
         this.element = payment;
         this.payments.push(this.element);
         this.lastPayment = this.element;
-        // console.log(this.payments);
       });
-
-
   }
 
   // ......save.....
