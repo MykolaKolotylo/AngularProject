@@ -19,7 +19,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './mock-db';
 import { HistoryPaymentComponent } from './history-payment/history-payment.component';
 import { MonthPipe } from './pipes/monthPipe';
-import { YearFilterPipe } from './pipes/sortYearMonth';
 
 
 
@@ -33,8 +32,7 @@ import { YearFilterPipe } from './pipes/sortYearMonth';
     VariablePriceComponent,
     ManagementAddressComponent,
     HistoryPaymentComponent,
-    MonthPipe,
-    YearFilterPipe
+    MonthPipe
   ],
 
   imports: [

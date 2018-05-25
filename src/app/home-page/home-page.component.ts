@@ -28,6 +28,7 @@ export class HomePageComponent implements OnInit {
     this.getPayments();
   }
 
+
   getPayments(): void {
     this.homeService.getPayment().subscribe(payments => {
       this.payments = payments;
@@ -40,13 +41,14 @@ export class HomePageComponent implements OnInit {
   addNewPayment() {
 
     this.element = {
-      year: 1, month: 0,
+      year: 2018, month: 0,
       fixedUt: [{ id: 1, name: 'rent', sum: 53, persAcc: 12345 },
       { id: 2, name: 'heating', sum: 349, persAcc: 12345 }],
-      varUt: [{ id: 1, name: 'light', previous: 123, current: null, tariff: 2.05, sum: null, persAcc: 12345 },
-      { id: 2, name: 'water', previous: 435345, current: null, tariff: 1.56, sum: null, persAcc: 324354 },
-      { id: 3, name: 'gas', previous: 112123, current: null, tariff: 3.8, sum: null, persAcc: 134253 }]
+      varUt: [{ id: 1, name: 'light', previous: 0 , current: null, tariff: 2.05, sum: null, persAcc: 12345 },
+      { id: 2, name: 'water', previous: 0, current: null, tariff: 1.56, sum: null, persAcc: 324354 },
+      { id: 3, name: 'gas', previous: 0, current: null, tariff: 3.8, sum: null, persAcc: 134253 }]
     };
+
     // TODO
     // get real last element
     //
@@ -66,6 +68,7 @@ export class HomePageComponent implements OnInit {
       this.element.year = this.lastPayment.year;
       this.element.month = this.lastPayment.month + 1;
     }
+    // console.log(this.lastPayment);
 
     this.homeService.addPayment(this.element)
       .subscribe(payment => {

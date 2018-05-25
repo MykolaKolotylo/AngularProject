@@ -42,6 +42,7 @@ export class HomeService {
   // .....add new payment to db.......
 
   addPayment(payment: Payment): Observable<Payment> {
+    console.log(payment);
     return this.http.post<Payment>(this.paymentUrl, payment, httpOptions);
   }
 }

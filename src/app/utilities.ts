@@ -29,11 +29,11 @@ export class Payment {
     fixedUt: FixedUtilities[];
     varUt: VarUtilities[];
 
-    constructor(year?: number, month?: number, fixedUt?: FixedUtilities[], varUt?: VarUtilities[]) {
-        this.year = year;
-        this.month = month;
-        this.fixedUt = fixedUt;
-        this.varUt = varUt;
-    }
+    // constructor(year?: number, month?: number, fixedUt?: FixedUtilities[], varUt?: VarUtilities[]) {
+    //     this.year = year;
+    //     this.month = month;
+    //     this.fixedUt = fixedUt;
+    //     this.varUt = varUt;
+    // }
 
 }

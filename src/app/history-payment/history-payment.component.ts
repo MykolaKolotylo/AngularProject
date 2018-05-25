@@ -19,66 +19,47 @@ export class HistoryPaymentComponent implements OnInit {
 
   payment: Payment[];
   paymentByHistory: Payment[];
-  selectedYear: number;
-  selectedMonth: string;
+  selectedYear = 2018;
   years = [];
-  months = [];
-  dataTest = [];
 
 
-  constructor(private historyService: HistoryService) {
-    // private route: ActivatedRoute,
-    // private location: Location) {
-    // route.params.subscribe((params) => {
-    //   this.dataRouting(params);
-    // });
-  }
-
-  // dataRouting (params) {
-  //   console.log(params);
-  // }
+  constructor(private historyService: HistoryService) { }
 
   ngOnInit() {
     this.getTemplatePayment();
-    // this.getTemplatePaymentHistory();
+    this.getTemplatePaymentHistory();
   }
-
-  // sortYears(a: number, b: number) {
-  //   if (a < b) {
-  //     return 1;
-  //   }
-  //   if (a > b) {
-  //     return -1;
-  //   }
-  // }
-
-
 
   getTemplatePayment(): void {
     this.historyService.getPayment().subscribe(data => {
       this.payment = data;
-      console.log(this.payment);
-      // this.paymentMethod();
+      this.paymentMethod();
+    });
+  }
+
+  paymentMethod() {
+    this.payment.forEach(el => {
+      if (!this.years.length) {
+        this.years.push(el.year);
+      } else if (this.years.indexOf(el.year) === -1) {
+        this.years.push(el.year);
+      }
+    });
+    this.years.sort(this.sortYears);
+  }
+
+  sortYears(a: number, b: number) {
+    return a < b ? 1 : -1;
+  }
+
+  // ........get history......
+
+
+  getTemplatePaymentHistory(): void {
+    this.historyService.getPaymentHistory(this.selectedYear).subscribe(data => {
+      this.paymentByHistory = data;
     });
   }
 
 
-  // getTemplatePaymentHistory(): void {
-  //   this.historyService.getPaymentHistory(this.selectedYear, this.selectedMonth).subscribe(data => {
-  //     this.paymentByHistory = data;
-  //   });
-  // }
-
-
-  // paymentMethod() {
-  //   this.payment.forEach(el => {
-  //     if (!this.years.length) {
-  //       this.years.push(el.year);
-  //     } else if (this.years.indexOf(el.year) === -1) {
-  //       this.years.push(el.year);
-  //     }
-  //   });
-  //   this.years.sort(this.sortYears);
-
-  // }
 }
