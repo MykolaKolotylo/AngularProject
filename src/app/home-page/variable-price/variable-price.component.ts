@@ -15,10 +15,7 @@ export class VariablePriceComponent implements OnInit {
 
   @Input() varBlk;
 
-  objDate = Date.now();
-
   payment: Payment;
-
   customClass = 'customClass';
 
   ngOnInit() {

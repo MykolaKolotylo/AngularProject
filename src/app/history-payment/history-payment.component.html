@@ -6,20 +6,13 @@
         <option *ngFor="let yearList of years"> {{ yearList  }}</option>
       </select>
     </div>
-    <!-- <div class="col-md-2 col-sm-6">
-      <select (change)="getTemplatePaymentHistory()" [(ngModel)]="selectedMonth">
-        <option *ngFor="let monthList of paymentByHistory">
-          {{ monthList.month | month }}</option>
-      </select>
-    </div> -->
-
   </div>
 </div>
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-6 mb-5" *ngFor='let blk1 of paymentByHistory'>
-      <ul class="list-group shadow-lg rounded">
+    <div class="col-sm-4 mb-5" *ngFor='let blk1 of paymentByHistory'>
+      <ul class="list-group shadow-lg rounded hovered">
         <li class="list-group-item  bg-info">
           <h4>{{blk1.month | month}}</h4>
         </li>
@@ -27,14 +20,14 @@
           <li class="list-group-item p-4">
             <span>{{ blk.name | uppercase}}</span>
             <span class="float-right">
-              <strong> {{ blk.sum }} </strong> uah</span>
+              <strong> {{ blk.sum | number:'.2' }} </strong> uah</span>
           </li>
         </div>
         <div *ngFor='let blk of blk1.fixedUt'>
           <li class="list-group-item p-4">
             <span>{{blk.name |uppercase }}</span>
             <span class="float-right">
-              <strong> {{blk.sum}}</strong> uah</span>
+              <strong> {{ blk.sum | number:'.2'}}</strong> uah</span>
           </li>
         </div>
       </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef} from '@angular/core';
 import { of } from 'rxjs';
 
 import { Payment } from '../utilities';
@@ -14,7 +14,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class HomePageComponent implements OnInit {
 
   constructor(private homeService: HomeService,
-    private modalService: BsModalService) { }
+              private modalService: BsModalService) { }
 
   payments: Payment[];
   element: Payment;
@@ -33,6 +33,7 @@ export class HomePageComponent implements OnInit {
     this.homeService.getPayment().subscribe(payments => {
       this.payments = payments;
       this.lastPayment = this.payments[this.payments.length - 1];
+      console.log(this.payments);
     });
   }
 
@@ -72,6 +73,7 @@ export class HomePageComponent implements OnInit {
 
     this.homeService.addPayment(this.element)
       .subscribe(payment => {
+        console.log(payment);
         this.element = payment;
         this.payments.push(this.element);
         this.lastPayment = this.element;

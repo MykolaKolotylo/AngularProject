@@ -1,4 +1,4 @@
-export class VarUtilities {
+export class VariableUtilities {
     id: number;
     name: string;
     previous: number;
@@ -27,13 +27,20 @@ export class Payment {
     year: number;
     month: number;
     fixedUt: FixedUtilities[];
-    varUt: VarUtilities[];
-
-    // constructor(year?: number, month?: number, fixedUt?: FixedUtilities[], varUt?: VarUtilities[]) {
-    //     this.year = year;
-    //     this.month = month;
-    //     this.fixedUt = fixedUt;
-    //     this.varUt = varUt;
-    // }
+    varUt: VariableUtilities[];
 
 }
+
+export class FixUtilities {
+    id: number;
+    name: string;
+    tariff: number;
+}
+
+export class VarUtilities {
+    id: number;
+    name: string;
+    tariff: number;
+}
+
+

@@ -1,3 +1,10 @@
 .bg-choose-addr {
     background-color: rgba(207, 230, 228, 0.753);
 }
+
+.hovered:hover {
+    transform: scale(1.1);
+    box-shadow: 0, 0, 10px rgba(0, 0, 0, .5);
+    transition: .5s all;
+    z-index: 10;
+}
