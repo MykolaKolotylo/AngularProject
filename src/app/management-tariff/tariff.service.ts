@@ -3,13 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
-import { Payment, VarUtilities, FixUtilities } from '../utilities';
+import { Payment, VarUtility, FixUtility } from '../utilities';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'api/fixUtilities' })
-};
-const httpOptionsVar = {
-  headers: new HttpHeaders({ 'Content-Type': 'api/varUtilities' }),
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -22,33 +19,31 @@ export class TariffService {
 
   constructor(private http: HttpClient) { }
 
-  getFixUt(id?: number): Observable<FixUtilities[]> {
-    const url = id ? `${this.fixedUrl}/?id=${id}` : `${this.fixedUrl}`;
-    return this.http.get<FixUtilities[]>(url);
+  getFixUt(): Observable<FixUtility[]> {
+    return this.http.get<FixUtility[]>(this.fixedUrl);
   }
 
-  getVarUt(id?: number): Observable<VarUtilities[]> {
-    const url = id ? `${this.varUrl}/?id=${id}` : `${this.varUrl}`;
-    return this.http.get<VarUtilities[]>(url);
+  getVarUt(): Observable<VarUtility[]> {
+    return this.http.get<VarUtility[]>(this.varUrl);
   }
 
-  newFixUtility(newUtility: FixUtilities): Observable<FixUtilities> {
-    return this.http.post<FixUtilities>(this.fixedUrl, newUtility, httpOptions);
+  newFixUtility(newUtility: FixUtility): Observable<FixUtility> {
+    return this.http.post<FixUtility>(this.fixedUrl, newUtility, httpOptions);
   }
 
-  newVarUtility(varUtility: VarUtilities): Observable<VarUtilities> {
-    return this.http.post<VarUtilities>(this.varUrl, varUtility, httpOptionsVar);
+  newVarUtility(varUtility: VarUtility): Observable<VarUtility> {
+    return this.http.post<VarUtility>(this.varUrl, varUtility, httpOptions);
   }
 
   // ......update payment.......
 
-  updateFixPayment(tariff: FixUtilities): Observable<any> {
-  // console.log(tariff);
-  return this.http.put<FixUtilities[]>(this.fixedUrl, tariff, httpOptions);
+  updateFixTariff(tariff: FixUtility): Observable<any> {
+    console.log(tariff);
+    return this.http.put<FixUtility>(this.fixedUrl, tariff, httpOptions);
   }
 
-  updateVarPayment(tariff: VarUtilities): Observable<any> {
-    // console.log(tariff);
-    return this.http.put<VarUtilities[]>(this.fixedUrl, tariff, httpOptions);
-    }
+  updateVarTariff(tariff: VarUtility): Observable<any> {
+    console.log(tariff);
+    return this.http.put<VarUtility>(this.varUrl, tariff, httpOptions);
+  }
 }

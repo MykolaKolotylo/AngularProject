@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { TariffService } from './tariff.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Payment, FixUtilities, VarUtilities } from '../utilities';
+import { Payment, FixUtility, VarUtility } from '../utilities';
 
 @Component({
   selector: 'app-management-tariff',
@@ -11,10 +11,9 @@ import { Payment, FixUtilities, VarUtilities } from '../utilities';
 export class ManagementTariffComponent implements OnInit {
 
   modalRef: BsModalRef;
-  fixUtility: FixUtilities[];
-  varUtilities: VarUtilities[];
+  fixUtility: FixUtility[];
+  varUtilities: VarUtility[];
   allUtilities = [];
-  fixed = true;
 
 
 
@@ -50,38 +49,38 @@ export class ManagementTariffComponent implements OnInit {
   // .........add new ..................
 
 
-  addUtility(NameUtility: string): void {
-    if (this.fixed === true) {
-      this.addFixUtility(NameUtility);
+  addUtility(NameUtility: string, fixed: boolean): void {
+    if (fixed === true) {
+      this.addFixUtility(NameUtility, fixed);
     } else {
-      this.addVarUtility(NameUtility);
+      this.addVarUtility(NameUtility, fixed);
     }
   }
 
-  addFixUtility(NameUtility): void {
-    console.log(this.fixUtility);
+  addFixUtility(NameUtility, fixed): void {
     NameUtility = NameUtility.trim();
     if (!NameUtility) { return; }
 
     const name = NameUtility;
-    const tariff = 0;
+    const tariff = null;
+    const fixMark = fixed;
 
-    this.tariffService.newFixUtility({ name, tariff } as FixUtilities)
-      .subscribe(newUtility => {
-        this.fixUtility.push(newUtility);
-        this.allUtilities.push(newUtility);
+    this.tariffService.newFixUtility({ name, tariff, fixMark } as FixUtility)
+      .subscribe(fixUtility => {
+        this.fixUtility.push(fixUtility);
+        this.allUtilities.push(fixUtility);
       });
   }
 
-  addVarUtility(NameUtility: string): void {
-    console.log(this.varUtilities);
+  addVarUtility(NameUtility: string, fixed: boolean): void {
     NameUtility = NameUtility.trim();
     if (!NameUtility) { return; }
 
     const name = NameUtility;
-    const tariff = 0;
+    const tariff = null;
+    const fixMark = false;
 
-    this.tariffService.newVarUtility({ name, tariff } as VarUtilities)
+    this.tariffService.newVarUtility({ name, tariff, fixMark } as VarUtility)
       .subscribe(varUtility => {
         this.varUtilities.push(varUtility);
         this.allUtilities.push(varUtility);
@@ -90,37 +89,21 @@ export class ManagementTariffComponent implements OnInit {
 
   // ............save............
 
-
-  save(newTariff: string, NameUtility: string, fixed: boolean): void {
-    // this.allUtilities.forEach(el => {
-    if (fixed === true) {
-      this.saveForFixUt(newTariff);
+  save(id: number, newTariff: number, NameUtility: string, check): void {
+    if (check === true) {
+      this.saveForFixUt({id: id, name: NameUtility, tariff: newTariff, fixMark: check } as FixUtility);
     } else {
-      this.saveForVarUt(newTariff);
+      this.saveForVarUt({id: id, name: NameUtility, tariff: newTariff, fixMark: check} as VarUtility);
     }
-    // });
   }
 
-  saveForFixUt(newTariff): void {
-    console.log(newTariff + ' ' + 'fixed');
-
-    // if (newTariff) {
-
-    // }
-
-    this.tariffService.updateFixPayment({ newTariff })
+  saveForFixUt(fixedUt: FixUtility): void {
+    this.tariffService.updateFixTariff(fixedUt)
       .subscribe();
   }
 
-
-  saveForVarUt(newTariff): void {
-    console.log(newTariff + ' ' + 'var');
-
-    // if (newTariff) {
-
-    // }
-
-    this.tariffService.updateVarPayment({ newTariff })
+  saveForVarUt(varUt: VarUtility): void {
+    this.tariffService.updateVarTariff(varUt)
       .subscribe();
   }
 

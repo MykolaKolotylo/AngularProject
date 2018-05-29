@@ -4,7 +4,7 @@
       <div class="row d-flex justify-content-center">
 
         <div class="col-2 text-center">
-          <button type="button" class="btn btn-info" (click)="addNewPayment()">Add new payment</button>
+          <button type="button" class="btn btn-outline-info" (click)="addNewPayment()">Add new payment</button>
         </div>
 
         <div class="col-sm-5">
@@ -21,7 +21,7 @@
 <div class="container m-4">
   <div class="row d-flex justify-content-center mb-2 text-center">
     <div class="col-2">
-      <h5>Year: {{ lastPayment?.year }}
+      <h5>Year: {{lastPayment?.year}}
       </h5>
     </div>
     <div class="col-3">
@@ -32,7 +32,7 @@
 
 <div class="container mb-3">
   <div class="row d-flex justify-content-center">
-    <div class="col-9 p-0">
+    <div class="col-8 p-0">
       <app-variable-price *ngFor='let b of lastPayment?.varUt' [varBlk]='b'></app-variable-price>
       <app-fixed-price *ngFor='let b of lastPayment?.fixedUt' [fixedBlk]='b'></app-fixed-price>
     </div>

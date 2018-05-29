@@ -16,6 +16,7 @@ export class FixedPriceComponent implements OnInit {
   customClass = 'customClass';
 
   ngOnInit() {
+    console.log(this.fixedBlk.tariff);
   }
 
 }

@@ -13,21 +13,24 @@
       </div>
     </div>
     <div class="modal-footer d-flex justify-content-center">
-      <button type="button" class="btn btn-info btn-lg" (click)="modalRef.hide(NameUtility)" (click)="addUtility(NameUtility, fixed); NameUtility='' " >Save</button>
+      <button type="button" class="btn btn-info btn-lg" 
+              (click)="modalRef.hide(NameUtility)" 
+              (click)="addUtility(NameUtility, fixed); NameUtility='' " >Save</button>
     </div>
   </ng-template>
 </div>
 
-
 <div class="container">
   <div class="row">
     <div class="col-sm-3" *ngFor="let i of allUtilities">
-      <div class="animated zoomIn card border-info mb-4 mt-4 mr-3" style="max-width: 18rem;">
-        <div class="card-header">{{i.name}}</div>
+      <div class="animated zoomIn card border-info mb-4 mt-4 mr-3" style="max-width: 20rem;">
+        <div class="card-header"><h5>{{i.name | uppercase}}</h5></div>
         <div class="card-body text-info">
-          <input type="text" class="card-title" placeholder="Enter tariff" [(ngModel)]="i.tariff" >
+          <input type="text" class="card-title" placeholder="Enter tariff" [(ngModel)]="i.tariff" >&nbsp;
+          <input type="checkbox" [(ngModel)]="i.fixMark">
           <p class="card-text">
-            <button type="button" class="btn btn-outline-info" (click)="save(i.tariff, i.name, check)" >Save</button>
+            <button type="button" class="btn btn-outline-info" 
+                    (click)="save(i.id, i.tariff, i.name, i.fixMark)" >Save</button>
           </p>
         </div>
       </div>
