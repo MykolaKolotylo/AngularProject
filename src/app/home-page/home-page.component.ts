@@ -1,10 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { of } from 'rxjs';
 
-import { Payment, FixUtilities, VarUtilities } from '../utilities';
+import { Payment, FixUtility, VarUtility } from '../utilities';
 import { HomeService } from './home-service.service';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TariffService } from '../management-tariff/tariff.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -15,13 +15,13 @@ import { TariffService } from '../management-tariff/tariff.service';
 export class HomePageComponent implements OnInit {
 
   constructor(private homeService: HomeService,
-    private modalService: BsModalService,
-    private tariffService: TariffService) { }
+              private modalService: BsModalService,
+              private tariffService: TariffService) { }
 
   payments: Payment[];
   lastPayment: Payment;
-  fixUtilities: FixUtilities[];
-  varUtilities: VarUtilities[];
+  fixUtilities: FixUtility[];
+  varUtilities: VarUtility[];
 
   modalRef: BsModalRef;
 
@@ -31,6 +31,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.getPayments();
+
     this.tariffService.getFixUt().subscribe(fixUtilities => {
       this.fixUtilities = fixUtilities;
     });
@@ -39,7 +40,6 @@ export class HomePageComponent implements OnInit {
       this.varUtilities = varUtilities;
     });
   }
-
 
   getPayments(): void {
     this.homeService.getPayment().subscribe(payments => {
@@ -56,22 +56,12 @@ export class HomePageComponent implements OnInit {
 
   addNewPayment() {
 
-    const element: Payment = {
+    let element: Payment = {
       year: this.year,
       month: this.month,
       fixedUt: this.fixUtilities,
       varUt: this.varUtilities
     };
-
-
-    // TODO
-    // get real last element
-    //
-    // handle if DB is empty
-    // year=2018
-    // month=current month
-    // preveously  for all = 0
-
 
     element.varUt.forEach((el, i) => {
       if (this.lastPayment.varUt[i] === undefined) {
@@ -83,7 +73,7 @@ export class HomePageComponent implements OnInit {
 
     if (this.lastPayment.month === 11) {
       element.year = this.lastPayment.year + 1;
-      element.month = 1;
+      element.month = 0;
     } else {
       element.year = this.lastPayment.year;
       element.month = this.lastPayment.month + 1;

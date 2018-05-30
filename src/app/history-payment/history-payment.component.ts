@@ -54,7 +54,6 @@ export class HistoryPaymentComponent implements OnInit {
 
   // ........get history......
 
-
   getTemplatePaymentHistory(): void {
     this.historyService.getPaymentHistory(this.selectedYear).subscribe(data => {
       this.paymentByHistory = data;

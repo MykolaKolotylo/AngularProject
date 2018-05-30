@@ -1,46 +1,33 @@
-<accordion>
-  <accordion-group heading="{{varBlk.name | uppercase }}" [panelClass]="customClass">
-    <div class="row">
-      <div class=" water-wrap col-sm ">
-        <div class="form-group mr-2">
-          <label>Previous
-            <input type="text" class="form-control" [(ngModel)]="varBlk.previous">
-          </label>
-        </div>
-        <div class="form-group mr-2">
-          <label>Current
-            <input type="text" class="form-control" [(ngModel)]="varBlk.current">
-          </label>
-        </div>
-        <div class="form-group mr-2">
-          <label>Tariff
-            <input type="text" class="form-control" [(ngModel)]="varBlk.tariff" disabled>
-          </label>
-        </div>
-        <div class="form-group mr-2">
-          <label>Sum
-            <input type="text" class="form-control"  value="{{varBlk.sum | number:'.2'}}">
-          </label>
-        </div>
-        <div class="form-group mr-2">
-          <button type="submit" class="btn btn-outline-info btn-block form-control" (click)="calculate(varBlk.previous, varBlk.current, varBlk.tariff)">Calculate</button>
-        </div>
+<div class="card border-info m-3 shadow" style="width: 18rem;">
+  <div class="card-header text-center">{{varBlk.name | uppercase }}</div>
+  <div class="card-body text-info">
+    <div class=" water-wrap col-sm ">
+      <div class="form-group mr-2">
+        <label>Previous
+          <input type="text" class="form-control" [(ngModel)]="varBlk.previous">
+        </label>
       </div>
-
-      <!-- <div class=" water-wrap border-left col-md-6 col-lg-5 col-sm-12">
-        <div class="jumbotron m-0">
-          <p class="lead">Personal account:
-            <strong>{{ varBlk.persAcc }}</strong>
-          </p>
-          <p class="lead" >Last Payment:
-            <strong>1.05.18</strong>
-          </p>
-          <p class="lead">Last Sum:
-            <strong>200 uah</strong>
-          </p>
-        </div>
-      </div> -->
-
+      <div class="form-group mr-2">
+        <label>Current
+          <input type="text" class="form-control" [(ngModel)]="varBlk.current">
+        </label>
+      </div>
+      <div class="form-group mr-2">
+        <label>Tariff
+          <input type="text" class="form-control" [(ngModel)]="varBlk.tariff" disabled>
+        </label>
+      </div>
+      <div class="form-group mr-2">
+        <label>Sum
+          <input type="text" class="form-control" value="{{varBlk.sum | number:'.2'}}">
+        </label>
+      </div>
+      <div class="form-group mr-2">
+        <button type="submit" 
+                class="btn btn-outline-info btn-block form-control" 
+                (click)="calculate(varBlk.previous, varBlk.current, varBlk.tariff)">
+        Calculate</button>
+      </div>
     </div>
-  </accordion-group>
-</accordion>
+  </div>
+</div>

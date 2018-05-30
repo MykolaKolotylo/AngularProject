@@ -10,7 +10,7 @@ export class FixUtility {
     id: number;
     name: string;
     tariff: number;
-    fixMark: boolean;
+    isCheck: boolean;
 }
 
 export class VarUtility {
@@ -20,7 +20,7 @@ export class VarUtility {
     current: number;
     tariff: number;
     sum: number;
-    fixMark: boolean;
+    isCheck: boolean;
 }
 
 

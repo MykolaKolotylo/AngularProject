@@ -27,6 +27,8 @@ export class TariffService {
     return this.http.get<VarUtility[]>(this.varUrl);
   }
 
+  // .........add new utility........
+
   newFixUtility(newUtility: FixUtility): Observable<FixUtility> {
     return this.http.post<FixUtility>(this.fixedUrl, newUtility, httpOptions);
   }
@@ -35,7 +37,7 @@ export class TariffService {
     return this.http.post<VarUtility>(this.varUrl, varUtility, httpOptions);
   }
 
-  // ......update payment.......
+  // ......update price.......
 
   updateFixTariff(tariff: FixUtility): Observable<any> {
     console.log(tariff);

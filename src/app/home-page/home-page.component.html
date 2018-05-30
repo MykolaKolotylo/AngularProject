@@ -1,60 +1,58 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col bg-address pt-3 pb-3 mb-4">
-      <div class="row d-flex justify-content-center">
-
-        <div class="col-2 text-center">
-          <button type="button" class="btn btn-outline-info" (click)="addNewPayment()">Add new payment</button>
-        </div>
-
-        <div class="col-sm-5">
-          <h5 class="text-center">Chernivtsi, avenue of Independence, 94, sq. 79</h5>
-        </div>
-        <div class="col-sm-2">
-          <h5>Vlagova M. S.</h5>
-        </div>
-      </div>
+    <div class="col-2 text-center mt-4">
+      <button type="button" 
+              class="btn btn-outline-info btn-lg shadow_button" 
+              (click)="addNewPayment()">Add new payment</button>
     </div>
   </div>
 </div>
 
-<div class="container m-4">
-  <div class="row d-flex justify-content-center mb-2 text-center">
+<div class="container">
+  <div class="row d-flex justify-content-center m-5 text-center">
     <div class="col-2">
       <h5>Year: {{lastPayment?.year}}
       </h5>
     </div>
     <div class="col-3">
-      <h5>Month: {{ lastPayment?.month | month }}</h5>
+      <h5>Month: {{ lastPayment?.month - 1 | month }}</h5>
     </div>
   </div>
 </div>
 
 <div class="container mb-3">
   <div class="row d-flex justify-content-center">
-    <div class="col-8 p-0">
-      <app-variable-price *ngFor='let b of lastPayment?.varUt' [varBlk]='b'></app-variable-price>
-      <app-fixed-price *ngFor='let b of lastPayment?.fixedUt' [fixedBlk]='b'></app-fixed-price>
-    </div>
+    <app-fixed-price *ngFor='let i of lastPayment?.fixedUt' 
+                      [fixedBlk]='i'></app-fixed-price>
+  </div>
+</div>
+
+<div class="container mb-3">
+  <div class="row d-flex justify-content-center">
+    <app-variable-price *ngFor='let i of lastPayment?.varUt' 
+                        [varBlk]='i'></app-variable-price>
   </div>
 </div>
 
 <hr>
 
-<div class="container m-5">
-  <div class="row d-flex justify-content-center">
-    <div class="col-2 p-0">
-      <button type="button" class="btn btn-info btn-block" (click)="openModal(template)">Save Payment</button>
-      <ng-template #template>
-        <div class="modal-body">
-          <div class="alert alert-info">
-            <strong>Info!</strong> If you save the payment, it will not be possible to change it
-          </div>
+<div class="container">
+  <div class="row d-flex justify-content-center mb-5">
+    <button type="button" 
+            class="btn btn-info" 
+            (click)="openModal(template)">Save Payment</button>
+    <ng-template #template>
+      <div class="modal-body">
+        <div class="alert alert-danger">
+          <strong>Info!</strong> If you save the payment, it will not be possible to change it
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <button type="button" class="btn btn-info btn-lg" (click)="modalRef.hide()" (click)="save(lastPayment)">Save</button>
-        </div>
-      </ng-template>
-    </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" 
+                class="btn btn-info btn-lg" 
+                (click)="modalRef.hide()" 
+                (click)="save(lastPayment)">Save</button>
+      </div>
+    </ng-template>
   </div>
 </div>

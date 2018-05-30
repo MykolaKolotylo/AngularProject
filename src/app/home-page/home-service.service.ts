@@ -27,7 +27,6 @@ export class HomeService {
 
   getPayments(year: number, month: number): Observable<Payment[]> {
     const url = `${this.paymentUrl}/?year=${year}\&month=${month}`;
-    console.log(url);
     return this.http.get<Payment[]>(url);
   }
 
@@ -35,14 +34,12 @@ export class HomeService {
   // ......update payment.......
 
   updatePayment(payment: Payment): Observable<any> {
-    console.log(payment);
     return this.http.put<Payment[]>(this.paymentUrl, payment, httpOptions);
   }
 
   // .....add new payment to db.......
 
   addPayment(payment: Payment): Observable<Payment> {
-    console.log(payment);
     return this.http.post<Payment>(this.paymentUrl, payment, httpOptions);
   }
 }
