@@ -39,7 +39,7 @@
 <div class="container">
   <div class="row d-flex justify-content-center mb-5">
     <button type="button" 
-            class="btn btn-info" 
+            class="btn btn-outline-info shadow_button" 
             (click)="openModal(template)">Save Payment</button>
     <ng-template #template>
       <div class="modal-body">
@@ -49,7 +49,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="button" 
-                class="btn btn-info btn-lg" 
+                class="btn btn-outline-danger btn-lg" 
                 (click)="modalRef.hide()" 
                 (click)="save(lastPayment)">Save</button>
       </div>
