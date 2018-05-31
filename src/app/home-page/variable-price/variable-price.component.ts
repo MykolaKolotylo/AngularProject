@@ -10,7 +10,6 @@ import { HomeService } from '../home-service.service';
 })
 export class VariablePriceComponent implements OnInit {
 
-
   constructor(private homeService: HomeService) { }
 
   @Input() varBlk;

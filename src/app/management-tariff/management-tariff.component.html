@@ -1,50 +1,57 @@
 <div class="container mt-4">
-  <button type="button" 
-          class="btn btn-outline-info btn-lg shadow_button" 
-          (click)="openModal(template)">Create new utility</button>
-  <ng-template #template>
-    <div class="modal-body">
-      <div class="alert">
-        <label>Name Utility: &nbsp;
-          <input type="text" [(ngModel)]="NameUtility">
-        </label>
-        &nbsp;
-        <label>Fixed: &nbsp;
-          <input type="checkbox" [(ngModel)]="fixed">
-        </label>
-      </div>
-    </div>
-    <div class="modal-footer d-flex justify-content-center">
+  <div class="row mx-auto">
+    <div class="col-sm">
       <button type="button" 
-              class="btn btn-info btn-lg" 
-              (click)="modalRef.hide(NameUtility)" 
-              (click)="addUtility( NameUtility, fixed); NameUtility='' ">Save</button>
+              class="btn btn-outline-info btn-lg shadow_button" 
+              (click)="openModal(template)">Create new utility</button>
+      <ng-template #template>
+        <div class="modal-body">
+          <div class="alert">
+            <label>Name Utility: &nbsp;
+              <input type="text" 
+                    [(ngModel)]="NameUtility">
+            </label>
+            &nbsp;
+            <label>Fixed: &nbsp;
+              <input type="checkbox" 
+                    [(ngModel)]="fixed">
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="button" 
+                  class="btn btn-info btn-lg" 
+                  (click)="modalRef.hide(NameUtility)" 
+                  (click)="addUtility( NameUtility, fixed); NameUtility='' ">Save</button>
+        </div>
+      </ng-template>
     </div>
-  </ng-template>
+  </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-3" *ngFor="let i of allUtilities">
-      <div class="animated zoomIn card border-info mb-4 mt-4 mr-3 shadow" 
-           style="max-width: 20rem;">
+    <div class="col-sm-3 col-md-4" 
+        *ngFor="let i of allUtilities">
+      <div class="animated zoomIn card border-info mb-4 mt-4 mr-3 shadow mx-auto" 
+          style="max-width: 20rem;">
         <div class="card-header">
           <h5>{{i.name | uppercase}}</h5>
         </div>
         <div class="card-body text-info">
           <p>fixed utility:
             <input type="checkbox" 
-                  [(ngModel)]="i.fixMark" 
+                  [(ngModel)]="i.isCheck" 
                   disabled>
           </p>
           <input type="text" 
                 class="card-title" 
                 placeholder="Enter tariff" 
-                [(ngModel)]="i.tariff">&nbsp;
+                [(ngModel)]="i.tariff"> &nbsp;
           <p class="card-text">
-            <button type="button"
+            <button type="button" 
                     class="btn btn-outline-info" 
-                    (click)="save(i.id, i.tariff, i.name, i.fixMark)">Save</button>
+                    (click)="save(i.id, i.tariff, i.name, i.isCheck)">Save</button>
           </p>
         </div>
       </div>

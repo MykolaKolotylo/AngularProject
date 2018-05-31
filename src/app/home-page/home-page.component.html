@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-2 text-center mt-4">
+    <div class="col-sm col-lg-6 text-center mt-4 mb-4">
       <button type="button" 
               class="btn btn-outline-info btn-lg shadow_button" 
               (click)="addNewPayment()">Add new payment</button>
@@ -9,12 +9,12 @@
 </div>
 
 <div class="container">
-  <div class="row d-flex justify-content-center m-5 text-center">
-    <div class="col-2">
+  <div class="row d-flex justify-content-center mb-4 text-center">
+    <div class="col-sm-6 col-lg-3">
       <h5>Year: {{lastPayment?.year}}
       </h5>
     </div>
-    <div class="col-3">
+    <div class="col-sm-6 col-lg-3">
       <h5>Month: {{ lastPayment?.month - 1 | month }}</h5>
     </div>
   </div>

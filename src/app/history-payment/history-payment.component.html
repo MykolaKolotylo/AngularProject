@@ -14,7 +14,7 @@
     <div class="col-sm-4 mb-5" *ngFor='let blk1 of paymentByHistory'>
       <ul class="list-group shadow-lg rounded hovered">
         <li class="list-group-item  bg-info">
-          <h4>{{blk1.month | month}}</h4>
+          <h4>{{blk1.month - 1 | month}}</h4>
         </li>
         <div *ngFor='let blk of blk1.varUt'>
           <li class="list-group-item p-4">
