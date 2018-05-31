@@ -40,12 +40,10 @@ export class TariffService {
   // ......update price.......
 
   updateFixTariff(tariff: FixUtility): Observable<any> {
-    console.log(tariff);
     return this.http.put<FixUtility>(this.fixedUrl, tariff, httpOptions);
   }
 
   updateVarTariff(tariff: VarUtility): Observable<any> {
-    console.log(tariff);
     return this.http.put<VarUtility>(this.varUrl, tariff, httpOptions);
   }
 }

@@ -17,7 +17,7 @@ export class ManagementTariffComponent implements OnInit {
   allUtilities = [];
 
   constructor(private tariffService: TariffService,
-    private modalService: BsModalService) { }
+              private modalService: BsModalService) { }
 
   ngOnInit() {
     this.getFixUtilities();
@@ -75,7 +75,6 @@ export class ManagementTariffComponent implements OnInit {
   }
 
   addFixUtility(fixedUt): void {
-
     this.tariffService.newFixUtility(fixedUt)
       .subscribe(fixUtility => {
         this.fixUtilities.push(fixUtility);

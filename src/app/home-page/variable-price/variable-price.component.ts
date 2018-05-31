@@ -12,7 +12,7 @@ export class VariablePriceComponent implements OnInit {
 
   constructor(private homeService: HomeService) { }
 
-  @Input() varBlk;
+  @Input() varUtility;
 
   payment: Payment;
   customClass = 'customClass';
@@ -21,6 +21,6 @@ export class VariablePriceComponent implements OnInit {
   }
 
   calculate(previous, current, tariff) {
-    this.varBlk.sum = (current - previous) * tariff;
+    this.varUtility.sum = (current - previous) * tariff;
   }
 }

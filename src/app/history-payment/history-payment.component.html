@@ -1,7 +1,6 @@
-<div class="container-fluid bg-choose-addr p-4">
+<div class="container-fluid p-4">
   <div class="row d-flex justify-content-center">
-
-    <div class="col-2">
+    <div class="col-3">
       <select (change)="getTemplatePaymentHistory()" [(ngModel)]="selectedYear">
         <option *ngFor="let yearList of years"> {{ yearList }}</option>
       </select>
@@ -11,22 +10,22 @@
 
 <div class="container mt-5">
   <div class="row d-flex justify-content-center">
-    <div class="card border-info m-3 shadow" 
+    <div class="card border-info m-3 card_shadow" 
         style="width: 18rem;" 
-        *ngFor='let blk1 of paymentByHistory'>
+        *ngFor='let i of paymentByHistory'>
       <div class="card-header text-center">
-        <h4>{{blk1.month - 1 | month}}</h4>
+        <h4>{{i.month - 1 | month}}</h4>
       </div>
       <div class="card-body text-info">
-        <div *ngFor='let blk of blk1.varUt' class="mt-3">
-          <span>{{ blk.name | uppercase}}</span>
+        <div *ngFor='let arrVarUt of i.varUt' class="mt-3">
+          <span>{{ arrVarUt.name | uppercase}}</span>
           <span class="float-right">
-            <strong> {{ blk.sum | number:'.2' }} </strong> uah</span>
+            <strong> {{ arrVarUt.sum | number:'.2' }} </strong> uah</span>
         </div>
-        <div *ngFor='let blk of blk1.fixedUt' class="mt-3">
-          <span>{{blk.name |uppercase }}</span>
+        <div *ngFor='let arrFixUt of i.fixedUt' class="mt-3">
+          <span>{{arrFixUt.name |uppercase }}</span>
           <span class="float-right">
-            <strong> {{ blk.tariff | number:'.2'}}</strong> uah</span>
+            <strong> {{ arrFixUt.tariff | number:'.2'}}</strong> uah</span>
         </div>
       </div>
     </div>

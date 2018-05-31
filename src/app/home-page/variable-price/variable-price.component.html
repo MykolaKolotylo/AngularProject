@@ -1,26 +1,26 @@
-<div class="card border-info m-3 shadow" style="width: 18rem;">
-  <div class="card-header text-center">{{varBlk.name | uppercase }}</div>
+<div class="card border-info m-3 card_shadow" style="width: 18rem;">
+  <div class="card-header text-center">{{varUtility.name | uppercase }}</div>
   <div class="card-body text-info">
-    <div class=" water-wrap col-sm ">
+    <div class="col-sm ">
       <div class="form-group mr-2">
         <label>Previous
           <input type="text" 
                 class="form-control" 
-                [(ngModel)]="varBlk.previous">
+                [(ngModel)]="varUtility.previous">
         </label>
       </div>
       <div class="form-group mr-2">
         <label>Current
           <input type="text" 
                 class="form-control" 
-                [(ngModel)]="varBlk.current">
+                [(ngModel)]="varUtility.current">
         </label>
       </div>
       <div class="form-group mr-2">
         <label>Tariff
           <input type="text" 
                 class="form-control" 
-                [(ngModel)]="varBlk.tariff" 
+                [(ngModel)]="varUtility.tariff" 
                 disabled>
         </label>
       </div>
@@ -28,13 +28,13 @@
         <label>Sum
           <input type="text" 
                 class="form-control" 
-                value="{{varBlk.sum | number:'.2'}}">
+                value="{{varUtility.sum | number:'.2'}}">
         </label>
       </div>
       <div class="form-group mr-2">
         <button type="submit" 
                 class="btn btn-outline-info btn-block form-control" 
-                (click)="calculate(varBlk.previous, varBlk.current, varBlk.tariff)">
+                (click)="calculate(varUtility.previous, varUtility.current, varUtility.tariff)">
         Calculate</button>
       </div>
     </div>

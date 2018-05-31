@@ -23,14 +23,14 @@
 <div class="container mb-3">
   <div class="row d-flex justify-content-center">
     <app-fixed-price *ngFor='let i of lastPayment?.fixedUt' 
-                      [fixedBlk]='i'></app-fixed-price>
+                      [fixedUtility]='i'></app-fixed-price>
   </div>
 </div>
 
 <div class="container mb-3">
   <div class="row d-flex justify-content-center">
     <app-variable-price *ngFor='let i of lastPayment?.varUt' 
-                        [varBlk]='i'></app-variable-price>
+                        [varUtility]='i'></app-variable-price>
   </div>
 </div>
 
@@ -43,13 +43,13 @@
             (click)="openModal(template)">Save Payment</button>
     <ng-template #template>
       <div class="modal-body">
-        <div class="alert alert-danger">
+        <div class="alert alert-info">
           <strong>Info!</strong> If you save the payment, it will not be possible to change it
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="button" 
-                class="btn btn-outline-danger btn-lg" 
+                class="btn btn-outline-info btn-lg" 
                 (click)="modalRef.hide()" 
                 (click)="save(lastPayment)">Save</button>
       </div>

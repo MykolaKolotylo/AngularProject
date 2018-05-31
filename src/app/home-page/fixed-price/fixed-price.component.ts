@@ -9,7 +9,7 @@ export class FixedPriceComponent implements OnInit {
 
   constructor() { }
 
-  @Input() fixedBlk;
+  @Input() fixedUtility;
 
   customClass = 'customClass';
 

@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { Payment } from '../utilities';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'api/payment' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -15,8 +15,6 @@ const httpOptions = {
 export class HomeService {
 
   private paymentUrl = 'api/payment';
-  payments: Payment[];
-
 
   constructor(private http: HttpClient) { }
 
@@ -24,12 +22,6 @@ export class HomeService {
     const url = id ? `${this.paymentUrl}/?id=${id}` : `${this.paymentUrl}`;
     return this.http.get<Payment[]>(url);
   }
-
-  getPayments(year: number, month: number): Observable<Payment[]> {
-    const url = `${this.paymentUrl}/?year=${year}\&month=${month}`;
-    return this.http.get<Payment[]>(url);
-  }
-
 
   // ......update payment.......
 
